@@ -76,7 +76,7 @@ const questions = [
     section: "🔥 Kinks",
     art: "assets/questions/q8.png",
     title: "8. Messenger Hawk (Part 1) 🍆💦",
-    body: "You and your secret lover are using messenger hawks to sext across nations. 🍆💦 To avoid anyone else seeing it, the scroll requires a secret passcode to unlock. Add the <strong>first and last digits</strong> of your secret passcode. 😏",
+    body: "You and your partner are using messenger hawks to sext across nations. 🍆💦 To avoid anyone else seeing it, the scroll requires a secret passcode to unlock. Add the <strong>first and last digits</strong> of your secret passcode. 😏",
     helper: "(Android: Use your Secure Folder passcode. iPhone: Use your Snapchat \"For My Eyes Only\" passcode.)<br><br><strong>Example:</strong> If your passcode is 1234, 1 + 4, so your answer would be 5.",
     type: "number",
     min: 0,
@@ -165,7 +165,7 @@ const questions = [
     section: "🌍 Personality",
     art: "assets/questions/q16.png",
     title: "16. Messenger Hawk (Part 2) 🍆💦",
-    body: "The messenger hawk made it safely to its destination. 🍆💦 Your lover replies with a scroll that's also protected by a secret passcode. Add the <strong>middle two digits</strong> of your secret passcode. 😏",
+    body: "The messenger hawk made it safely to its destination. 🍆💦 Your partner replies with a scroll that's also protected by a secret passcode. Add the <strong>middle two digits</strong> of your secret passcode. 😏",
     helper: "(Android: Use your Secure Folder passcode. iPhone: Use your Snapchat \"For My Eyes Only\" passcode.)<br><br><strong>Example:</strong> If your passcode is 1234, 2 + 3, so your answer would be 5.",
     type: "number",
     min: 0,
@@ -246,9 +246,9 @@ function renderQuestion(animate = true) {
   } else {
     const val = answers[current] ?? "";
     html += `<div class="numeric-wrap">
+      ${q.helper ? `<div class="helper">${q.helper}</div>` : ""}
       <label for="numericAnswer">${q.label}</label>
       <input id="numericAnswer" class="numeric-input" type="number" min="${q.min}" max="${q.max}" value="${val}" inputmode="numeric" />
-      ${q.helper ? `<p class="helper">${q.helper}</p>` : ""}
     </div>`;
   }
 
