@@ -1,6 +1,7 @@
 const questions = [
   {
     section: "❤️ Love",
+    art: "assets/questions/q1.svg",
     title: "1. The Four Nations are voting for their favorite couple. Who gets your vote? ❤️",
     type: "choice",
     options: [
@@ -12,6 +13,7 @@ const questions = [
   },
   {
     section: "❤️ Love",
+    art: "assets/questions/q2.svg",
     title: "2. Which date sounds the most romantic?",
     type: "choice",
     options: [
@@ -23,12 +25,14 @@ const questions = [
   },
   {
     section: "❤️ Love",
+    art: "assets/questions/q3.svg",
     title: "3. Which animal companion are you choosing?",
     type: "choice",
     options: ["🦬 Appa", "🐻‍❄️ Naga", "🦊 Pabu", "🐍 Shirshu"]
   },
   {
     section: "❤️ Love",
+    art: "assets/questions/q4.svg",
     title: "4. Dai Li (Part 1) 📱",
     body: "The Dai Li have discovered your belongings, but they're protected by a powerful locking seal. Add the <strong>first and last digits</strong> of your passcode to break the first seal. 🔐",
     helper: "(Use your current phone passcode. If you use Face ID or fingerprint, use the numeric passcode you would enter instead.)<br><br><strong>Example:</strong> If your passcode is 1234, 1 + 4, so your answer would be 5.",
@@ -39,6 +43,7 @@ const questions = [
   },
   {
     section: "🔥 Kinks",
+    art: "assets/questions/q5.svg",
     title: "5. Which vibe are you most attracted to? ❤️",
     type: "choice",
     options: [
@@ -50,6 +55,7 @@ const questions = [
   },
   {
     section: "🔥 Kinks",
+    art: "assets/questions/q6.svg",
     title: "6. Which bending style do you think would make the best lover? 😉",
     type: "choice",
     options: [
@@ -61,12 +67,14 @@ const questions = [
   },
   {
     section: "🔥 Kinks",
+    art: "assets/questions/q7.svg",
     title: "7. After a wild night out in Republic City, it's last call at the bar. Who are you leaving with? 😉",
     type: "choice",
     options: ["🔥 Zuko", "⚡ Mako", "🪃 Sokka", "🌊 Korra", "✨ Asami", "👑 Azula"]
   },
   {
     section: "🔥 Kinks",
+    art: "assets/questions/q8.svg",
     title: "8. Messenger Hawk (Part 1) 🍆💦",
     body: "You and your partner are using messenger hawks to sext across nations. 🍆💦 To avoid anyone else seeing it, the scroll requires a secret passcode to unlock. Add the <strong>first and last digits</strong> of your secret passcode. 😏",
     helper: "(Android: Use your Secure Folder passcode. iPhone: Use your Snapchat \"For My Eyes Only\" passcode.)<br><br><strong>Example:</strong> If your passcode is 1234, 1 + 4, so your answer would be 5.",
@@ -77,6 +85,7 @@ const questions = [
   },
   {
     section: "⚙️ The Mechanist",
+    art: "assets/questions/q9.svg",
     title: "9. Tattoos",
     body: "Aang had to hide his tattoos to sneak into a Fire Nation school. You're trying to stay under the radar after a sneaky link.",
     type: "number",
@@ -86,6 +95,7 @@ const questions = [
   },
   {
     section: "⚙️ The Mechanist",
+    art: "assets/questions/q10.svg",
     title: "10. Secret Library",
     body: "The spirits guarding the secret library are a little freaky. To gain access, enter the age you lost your virginity.",
     type: "number",
@@ -95,6 +105,7 @@ const questions = [
   },
   {
     section: "⚙️ The Mechanist",
+    art: "assets/questions/q11.svg",
     title: "11. Piercings",
     body: "Some of the edgier people Aang meets throughout his journey wear their style proudly.",
     type: "number",
@@ -104,6 +115,7 @@ const questions = [
   },
   {
     section: "⚙️ The Mechanist",
+    art: "assets/questions/q12.svg",
     title: "12. Dai Li (Final Attempt) 📱",
     body: "The Dai Li broke the first seal, but one final powerful locking seal remains. Add the <strong>middle two digits</strong> of your passcode to break the final seal. 🔐",
     helper: "(Use your current phone passcode. If you use Face ID or fingerprint, use the numeric passcode you would enter instead.)<br><br><strong>Example:</strong> If your passcode is 1234, 2 + 3, so your answer would be 5.",
@@ -114,6 +126,7 @@ const questions = [
   },
   {
     section: "🌍 Personality",
+    art: "assets/questions/q13.svg",
     title: "13. Zaheer gave up his earthly tether and became only the second person in history able to fly. What still keeps you tethered?",
     type: "choice",
     options: [
@@ -125,6 +138,7 @@ const questions = [
   },
   {
     section: "🌍 Personality",
+    art: "assets/questions/q14.svg",
     title: "14. Team Avatar is one member short. Who are you subbing in for?",
     type: "choice",
     options: [
@@ -136,6 +150,7 @@ const questions = [
   },
   {
     section: "🌍 Personality",
+    art: "assets/questions/q15.svg",
     title: "15. The Lion Turtle speaks in riddles for what feels like forever before asking:",
     quote: "\"What does your heart pursue, when your journey is through?\"",
     type: "choice",
@@ -148,6 +163,7 @@ const questions = [
   },
   {
     section: "🌍 Personality",
+    art: "assets/questions/q16.svg",
     title: "16. Messenger Hawk (Part 2) 🍆💦",
     body: "The messenger hawk made it safely to its destination. 🍆💦 Your partner replies with a scroll that's also protected by a secret passcode. Add the <strong>middle two digits</strong> of your secret passcode. 😏",
     helper: "(Android: Use your Secure Folder passcode. iPhone: Use your Snapchat \"For My Eyes Only\" passcode.)<br><br><strong>Example:</strong> If your passcode is 1234, 2 + 3, so your answer would be 5.",
@@ -216,7 +232,7 @@ function renderQuestion(animate = true) {
   $("questionCount").textContent = current + 1;
   $("progressBar").style.width = `${((current + 1) / questions.length) * 100}%`;
 
-  let html = `<h2>${q.title}</h2>`;
+  let html = `<img class="question-art" src="${q.art}" alt="" loading="eager"><h2>${q.title}</h2>`;
   if (q.body) html += `<p class="question-copy">${q.body}</p>`;
   if (q.quote) html += `<blockquote>${q.quote}</blockquote>`;
 
@@ -360,18 +376,57 @@ function calculateResults() {
   return { core, loveStyle, firstImpression, subKink, hidden, quirk };
 }
 
+function slug(value) {
+  return String(value).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+const traitVisuals = {
+  kink: {
+    "Dragon Fire":"🐉", "Lightning":"⚡", "Blue Fire":"💙", "Metal":"⛓️", "Blood":"🩸",
+    "Healing":"✨", "Ice":"❄️", "Lava":"🌋", "Combustion":"💥", "Flight":"🪽", "Spiritual Projection":"👻"
+  },
+  love: {
+    "Romantic":"🌹", "Independent":"🗝️", "Best Friend":"🤝", "Ride or Die":"🗡️",
+    "Slow Burn":"🕯️", "Soulmate":"🧵", "Adventure":"🗺️", "Protective":"🛡️",
+    "Golden Retriever":"☀️", "Chaotic":"🎲"
+  },
+  mask: { Fire:"🔥", Water:"🌊", Earth:"🪨", Air:"🌪️" }
+};
+
+function visualToken(group, value, label) {
+  const icon = traitVisuals[group]?.[value] || (group === "hidden" ? "🔒" : "📜");
+  return `<div class="scene-token token-${group} token-${slug(value)}" title="${label}: ${value}">
+    <span class="token-icon">${icon}</span><small>${label}</small><strong>${value}</strong>
+  </div>`;
+}
+
 function showResults() {
   const r = calculateResults();
   quizApp.classList.add("hidden");
   resultScreen.classList.remove("hidden");
+  document.body.dataset.resultElement = r.core.toLowerCase();
   $("resultTitle").textContent = `${r.core}bender`;
   $("resultCard").innerHTML = `
-    ${resultRow("🔥 Core Element", `${r.core}bender`)}
-    ${resultRow("⚙️ Sub-bending Kink", `${r.subKink} Kink`)}
-    ${resultRow("❤️ Love Style", `${r.loveStyle} Love Style`)}
-    ${resultRow("🎭 Mask (First Impression)", `${r.firstImpression} Energy`)}
-    ${resultRow("🔒 Hidden Trait", r.hidden)}
-    ${resultRow("📜 Relationship Quirk", r.quirk)}
+    <div class="result-portrait result-${r.core.toLowerCase()}" data-element="${r.core.toLowerCase()}">
+      <img class="result-art" src="assets/results/${r.core.toLowerCase()}.svg" alt="Original cinematic ${r.core}bender result art">
+      <div class="portrait-aura" aria-hidden="true"></div>
+      <div class="trait-orbit">
+        ${visualToken("kink", r.subKink, "Kink")}
+        ${visualToken("love", r.loveStyle, "Love")}
+        ${visualToken("mask", r.firstImpression, "Mask")}
+        ${visualToken("hidden", r.hidden, "Hidden")}
+        ${visualToken("quirk", r.quirk, "Quirk")}
+      </div>
+      <div class="result-nameplate"><span>${r.core}bender</span><small>Your exact elemental combination</small></div>
+    </div>
+    <div class="result-breakdown">
+      ${resultRow("🔥 Core Element", `${r.core}bender`)}
+      ${resultRow("⚙️ Sub-bending Kink", `${r.subKink} Kink`)}
+      ${resultRow("❤️ Love Style", `${r.loveStyle} Love Style`)}
+      ${resultRow("🎭 Mask (First Impression)", `${r.firstImpression} Energy`)}
+      ${resultRow("🔒 Hidden Trait", r.hidden)}
+      ${resultRow("📜 Relationship Quirk", r.quirk)}
+    </div>
   `;
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -403,6 +458,7 @@ $("restartBtn").addEventListener("click", () => {
   answers = Array(questions.length).fill(null);
   current = 0;
   resultScreen.classList.add("hidden");
+  delete document.body.dataset.resultElement;
   quizApp.classList.remove("hidden");
   renderQuestion();
 });
@@ -527,7 +583,7 @@ function roundedRect(ctx, x, y, w, h, r) {
   ctx.fill();
 }
 
-function drawResultCard() {
+async function drawResultCard() {
   const canvas = $("shareCanvas");
   const ctx = canvas.getContext("2d");
   const r = calculateResults();
@@ -539,7 +595,6 @@ function drawResultCard() {
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // elemental glow
   const glow = ctx.createRadialGradient(190, 170, 20, 190, 170, 500);
   glow.addColorStop(0, "rgba(229,104,64,.35)");
   glow.addColorStop(1, "rgba(229,104,64,0)");
@@ -548,16 +603,46 @@ function drawResultCard() {
 
   ctx.textAlign = "center";
   ctx.fillStyle = "#e2b45c";
-  ctx.font = "700 34px Inter, sans-serif";
-  ctx.fillText("UNOFFICIAL FAN-MADE QUIZ", 540, 95);
+  ctx.font = "700 30px Inter, sans-serif";
+  ctx.fillText("UNOFFICIAL FAN-MADE QUIZ", 540, 68);
 
   ctx.fillStyle = "#f6efe5";
-  ctx.font = "700 74px Cinzel, serif";
-  ctx.fillText("Avatar Kink Quiz", 540, 185);
+  ctx.font = "700 62px Cinzel, serif";
+  ctx.fillText("Avatar Kink Quiz", 540, 145);
+
+  const art = new Image();
+  art.src = `assets/results/${r.core.toLowerCase()}.svg`;
+  try {
+    await art.decode();
+    ctx.save();
+    ctx.beginPath();
+    ctx.roundRect(85, 180, 910, 300, 28);
+    ctx.clip();
+    ctx.drawImage(art, 85, 180, 910, 300);
+    ctx.restore();
+  } catch {
+    ctx.fillStyle = "rgba(255,255,255,.07)";
+    roundedRect(ctx, 85, 180, 910, 300, 28);
+  }
+
+  const canvasTokens = [
+    [traitVisuals.kink[r.subKink] || "⚙️", r.subKink],
+    [traitVisuals.love[r.loveStyle] || "❤️", r.loveStyle],
+    [traitVisuals.mask[r.firstImpression] || "🎭", `${r.firstImpression} Energy`]
+  ];
+  ctx.textAlign = "center";
+  canvasTokens.forEach(([icon, text], i) => {
+    const x = 235 + i * 305;
+    ctx.fillStyle = "rgba(12,14,18,.78)";
+    roundedRect(ctx, x - 125, 425, 250, 66, 20);
+    ctx.fillStyle = "#f6efe5";
+    ctx.font = "700 24px Inter, sans-serif";
+    ctx.fillText(`${icon} ${text}`, x, 466);
+  });
 
   ctx.fillStyle = "#f6efe5";
-  ctx.font = "700 86px Cinzel, serif";
-  ctx.fillText(`${r.core}bender`, 540, 300);
+  ctx.font = "700 70px Cinzel, serif";
+  ctx.fillText(`${r.core}bender`, 540, 565);
 
   const rows = [
     ["⚙️ SUB-BENDING KINK", `${r.subKink} Kink`],
@@ -567,29 +652,29 @@ function drawResultCard() {
     ["📜 RELATIONSHIP QUIRK", r.quirk]
   ];
 
-  let y = 365;
+  let y = 610;
   ctx.textAlign = "left";
 
   rows.forEach(([label, value], idx) => {
-    const boxH = idx === rows.length - 1 ? 235 : 145;
+    const boxH = idx === rows.length - 1 ? 190 : 120;
     ctx.fillStyle = "rgba(255,255,255,.07)";
-    roundedRect(ctx, 85, y, 910, boxH, 26);
+    roundedRect(ctx, 85, y, 910, boxH, 24);
 
     ctx.fillStyle = "#e2b45c";
-    ctx.font = "700 25px Inter, sans-serif";
-    ctx.fillText(label, 125, y + 42);
+    ctx.font = "700 22px Inter, sans-serif";
+    ctx.fillText(label, 125, y + 34);
 
     ctx.fillStyle = "#f6efe5";
-    ctx.font = idx === rows.length - 1 ? "600 34px Inter, sans-serif" : "700 42px Inter, sans-serif";
-    wrapCanvasText(ctx, value, 125, y + 95, 820, 45, idx === rows.length - 1 ? 3 : 2);
+    ctx.font = idx === rows.length - 1 ? "600 30px Inter, sans-serif" : "700 37px Inter, sans-serif";
+    wrapCanvasText(ctx, value, 125, y + 80, 820, 39, idx === rows.length - 1 ? 3 : 2);
 
-    y += boxH + 20;
+    y += boxH + 14;
   });
 
   ctx.textAlign = "center";
   ctx.fillStyle = "#aaa198";
-  ctx.font = "500 24px Inter, sans-serif";
-  ctx.fillText("No answers or passcodes are stored.", 540, 1310);
+  ctx.font = "500 20px Inter, sans-serif";
+  ctx.fillText("Original fan-made artwork • Answers stay in your browser", 540, 1320);
 
   return canvas;
 }
@@ -599,7 +684,7 @@ function canvasToBlob(canvas) {
 }
 
 $("saveCardBtn").addEventListener("click", async () => {
-  const canvas = drawResultCard();
+  const canvas = await drawResultCard();
   const blob = await canvasToBlob(canvas);
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -610,7 +695,7 @@ $("saveCardBtn").addEventListener("click", async () => {
 });
 
 $("shareCardBtn").addEventListener("click", async () => {
-  const canvas = drawResultCard();
+  const canvas = await drawResultCard();
   const blob = await canvasToBlob(canvas);
   const file = new File([blob], "avatar-kink-quiz-result.png", { type: "image/png" });
 
