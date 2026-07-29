@@ -220,6 +220,13 @@ $("enterQuiz").addEventListener("click", () => {
   renderQuestion();
 });
 
+function sectionTheme(section) {
+  if (section.includes("Love")) return { key: "water", icon: "🌊", title: "Water Scroll" };
+  if (section.includes("Kinks")) return { key: "fire", icon: "🔥", title: "Fire Scroll" };
+  if (section.includes("Mechanist")) return { key: "earth", icon: "🪨", title: "Earth Scroll" };
+  return { key: "air", icon: "🌪️", title: "Air Scroll" };
+}
+
 function renderQuestion(animate = true) {
   const q = questions[current];
   if (animate) {
@@ -232,25 +239,58 @@ function renderQuestion(animate = true) {
   $("questionCount").textContent = current + 1;
   $("progressBar").style.width = `${((current + 1) / questions.length) * 100}%`;
 
-  let html = `<img class="question-art" src="${q.art}" alt="" loading="eager"><h2>${q.title}</h2>`;
-  if (q.body) html += `<p class="question-copy">${q.body}</p>`;
-  if (q.quote) html += `<blockquote>${q.quote}</blockquote>`;
+  const theme = sectionTheme(q.section);
+  questionCard.dataset.theme = theme.key;
 
+  let responseHtml = "";
   if (q.type === "choice") {
-    html += `<div class="answers">`;
+    responseHtml += `<div class="answers">`;
     q.options.forEach((opt, idx) => {
       const selected = answers[current] === idx ? "selected" : "";
-      html += `<button class="answer ${selected}" data-index="${idx}">${opt}</button>`;
+      responseHtml += `<button class="answer ${selected}" data-index="${idx}">
+        <span class="answer-rune">${String.fromCharCode(65 + idx)}</span>
+        <span class="answer-copy">${opt}</span>
+      </button>`;
     });
-    html += `</div>`;
+    responseHtml += `</div>`;
   } else {
     const val = answers[current] ?? "";
-    html += `<div class="numeric-wrap">
-      ${q.helper ? `<div class="helper">${q.helper}</div>` : ""}
+    responseHtml += `<div class="numeric-wrap">
+      ${q.helper ? `<div class="helper"><span class="helper-mark">✦</span><div>${q.helper}</div></div>` : ""}
       <label for="numericAnswer">${q.label}</label>
-      <input id="numericAnswer" class="numeric-input" type="number" min="${q.min}" max="${q.max}" value="${val}" inputmode="numeric" />
+      <div class="numeric-field">
+        <span class="seal-glyph" aria-hidden="true">${theme.icon}</span>
+        <input id="numericAnswer" class="numeric-input" type="number" min="${q.min}" max="${q.max}" value="${val}" inputmode="numeric" />
+      </div>
     </div>`;
   }
+
+  let html = `
+    <div class="scroll-shell">
+      <div class="scroll-topline">
+        <span class="scroll-symbol">${theme.icon}</span>
+        <span>${theme.title}</span>
+        <span class="scroll-number">Question ${current + 1}</span>
+      </div>
+
+      <div class="question-scene">
+        <div class="art-frame">
+          <img class="question-art" src="${q.art}" alt="" loading="eager">
+          <div class="art-vignette" aria-hidden="true"></div>
+          <div class="element-stamp" aria-hidden="true">${theme.icon}</div>
+        </div>
+
+        <div class="parchment-copy">
+          <div class="parchment-inner">
+            <p class="chapter-label">${q.section}</p>
+            <h2>${q.title}</h2>
+            ${q.body ? `<p class="question-copy">${q.body}</p>` : ""}
+            ${q.quote ? `<blockquote>${q.quote}</blockquote>` : ""}
+            ${responseHtml}
+          </div>
+        </div>
+      </div>
+    </div>`;
 
   questionCard.innerHTML = html;
 
