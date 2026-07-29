@@ -220,8 +220,21 @@ $("enterQuiz").addEventListener("click", () => {
   renderQuestion();
 });
 
+
+function getQuestionTheme(section, title = "") {
+  if (section.includes("Love")) return { key: "water", icon: "🌊", rune: "◌" };
+  if (section.includes("Kinks")) return { key: "fire", icon: "🔥", rune: "◇" };
+  if (section.includes("Mechanist")) {
+    const lockingSeal = title.includes("Dai Li");
+    return { key: lockingSeal ? "seal" : "earth", icon: lockingSeal ? "🔒" : "⚙️", rune: lockingSeal ? "▣" : "⌘" };
+  }
+  return { key: "air", icon: "🌪️", rune: "◎" };
+}
+
 function renderQuestion(animate = true) {
   const q = questions[current];
+  const theme = getQuestionTheme(q.section, q.title);
+  questionCard.dataset.theme = theme.key;
   if (animate) {
     questionCard.classList.remove("transition-in");
     void questionCard.offsetWidth;
@@ -240,15 +253,21 @@ function renderQuestion(animate = true) {
     html += `<div class="answers">`;
     q.options.forEach((opt, idx) => {
       const selected = answers[current] === idx ? "selected" : "";
-      html += `<button class="answer ${selected}" data-index="${idx}">${opt}</button>`;
+      html += `<button class="answer ${selected}" data-index="${idx}">
+        <span class="answer-rune" aria-hidden="true">${theme.rune}</span>
+        <span class="answer-text">${opt}</span>
+      </button>`;
     });
     html += `</div>`;
   } else {
     const val = answers[current] ?? "";
     html += `<div class="numeric-wrap">
-      ${q.helper ? `<div class="helper">${q.helper}</div>` : ""}
+      ${q.helper ? `<div class="helper"><span class="helper-icon" aria-hidden="true">${theme.icon}</span><div>${q.helper}</div></div>` : ""}
       <label for="numericAnswer">${q.label}</label>
-      <input id="numericAnswer" class="numeric-input" type="number" min="${q.min}" max="${q.max}" value="${val}" inputmode="numeric" />
+      <div class="numeric-field">
+        <span class="numeric-icon" aria-hidden="true">${theme.icon}</span>
+        <input id="numericAnswer" class="numeric-input" type="number" min="${q.min}" max="${q.max}" value="${val}" inputmode="numeric" />
+      </div>
     </div>`;
   }
 
