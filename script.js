@@ -1,7 +1,7 @@
 const questions = [
   {
     section: "❤️ Love",
-    art: "assets/questions/q1.svg",
+    art: "assets/questions/q1.png",
     title: "1. The Four Nations are voting for their favorite couple. Who gets your vote? ❤️",
     type: "choice",
     options: [
@@ -13,7 +13,7 @@ const questions = [
   },
   {
     section: "❤️ Love",
-    art: "assets/questions/q2.svg",
+    art: "assets/questions/q2.png",
     title: "2. Which date sounds the most romantic?",
     type: "choice",
     options: [
@@ -25,14 +25,14 @@ const questions = [
   },
   {
     section: "❤️ Love",
-    art: "assets/questions/q3.svg",
+    art: "assets/questions/q3.png",
     title: "3. Which animal companion are you choosing?",
     type: "choice",
     options: ["🦬 Appa", "🐻‍❄️ Naga", "🦊 Pabu", "🐍 Shirshu"]
   },
   {
     section: "❤️ Love",
-    art: "assets/questions/q4.svg",
+    art: "assets/questions/q4.png",
     title: "4. Dai Li (Part 1) 📱",
     body: "The Dai Li have discovered your belongings, but they're protected by a powerful locking seal. Add the <strong>first and last digits</strong> of your passcode to break the first seal. 🔐",
     helper: "(Use your current phone passcode. If you use Face ID or fingerprint, use the numeric passcode you would enter instead.)<br><br><strong>Example:</strong> If your passcode is 1234, 1 + 4, so your answer would be 5.",
@@ -43,7 +43,7 @@ const questions = [
   },
   {
     section: "🔥 Kinks",
-    art: "assets/questions/q5.svg",
+    art: "assets/questions/q5.png",
     title: "5. Which vibe are you most attracted to? ❤️",
     type: "choice",
     options: [
@@ -55,7 +55,7 @@ const questions = [
   },
   {
     section: "🔥 Kinks",
-    art: "assets/questions/q6.svg",
+    art: "assets/questions/q6.png",
     title: "6. Which bending style do you think would make the best lover? 😉",
     type: "choice",
     options: [
@@ -67,16 +67,16 @@ const questions = [
   },
   {
     section: "🔥 Kinks",
-    art: "assets/questions/q7.svg",
+    art: "assets/questions/q7.png",
     title: "7. After a wild night out in Republic City, it's last call at the bar. Who are you leaving with? 😉",
     type: "choice",
     options: ["🔥 Zuko", "⚡ Mako", "🪃 Sokka", "🌊 Korra", "✨ Asami", "👑 Azula"]
   },
   {
     section: "🔥 Kinks",
-    art: "assets/questions/q8.svg",
+    art: "assets/questions/q8.png",
     title: "8. Messenger Hawk (Part 1) 🍆💦",
-    body: "You and your partner are using messenger hawks to sext across nations. 🍆💦 To avoid anyone else seeing it, the scroll requires a secret passcode to unlock. Add the <strong>first and last digits</strong> of your secret passcode. 😏",
+    body: "You and your secret lover are using messenger hawks to sext across nations. 🍆💦 To avoid anyone else seeing it, the scroll requires a secret passcode to unlock. Add the <strong>first and last digits</strong> of your secret passcode. 😏",
     helper: "(Android: Use your Secure Folder passcode. iPhone: Use your Snapchat \"For My Eyes Only\" passcode.)<br><br><strong>Example:</strong> If your passcode is 1234, 1 + 4, so your answer would be 5.",
     type: "number",
     min: 0,
@@ -85,7 +85,7 @@ const questions = [
   },
   {
     section: "⚙️ The Mechanist",
-    art: "assets/questions/q9.svg",
+    art: "assets/questions/q9.png",
     title: "9. Tattoos",
     body: "Aang had to hide his tattoos to sneak into a Fire Nation school. You're trying to stay under the radar after a sneaky link.",
     type: "number",
@@ -95,7 +95,7 @@ const questions = [
   },
   {
     section: "⚙️ The Mechanist",
-    art: "assets/questions/q10.svg",
+    art: "assets/questions/q10.png",
     title: "10. Secret Library",
     body: "The spirits guarding the secret library are a little freaky. To gain access, enter the age you lost your virginity.",
     type: "number",
@@ -105,7 +105,7 @@ const questions = [
   },
   {
     section: "⚙️ The Mechanist",
-    art: "assets/questions/q11.svg",
+    art: "assets/questions/q11.png",
     title: "11. Piercings",
     body: "Some of the edgier people Aang meets throughout his journey wear their style proudly.",
     type: "number",
@@ -115,7 +115,7 @@ const questions = [
   },
   {
     section: "⚙️ The Mechanist",
-    art: "assets/questions/q12.svg",
+    art: "assets/questions/q12.png",
     title: "12. Dai Li (Final Attempt) 📱",
     body: "The Dai Li broke the first seal, but one final powerful locking seal remains. Add the <strong>middle two digits</strong> of your passcode to break the final seal. 🔐",
     helper: "(Use your current phone passcode. If you use Face ID or fingerprint, use the numeric passcode you would enter instead.)<br><br><strong>Example:</strong> If your passcode is 1234, 2 + 3, so your answer would be 5.",
@@ -126,7 +126,7 @@ const questions = [
   },
   {
     section: "🌍 Personality",
-    art: "assets/questions/q13.svg",
+    art: "assets/questions/q13.png",
     title: "13. Zaheer gave up his earthly tether and became only the second person in history able to fly. What still keeps you tethered?",
     type: "choice",
     options: [
@@ -138,7 +138,7 @@ const questions = [
   },
   {
     section: "🌍 Personality",
-    art: "assets/questions/q14.svg",
+    art: "assets/questions/q14.png",
     title: "14. Team Avatar is one member short. Who are you subbing in for?",
     type: "choice",
     options: [
@@ -150,7 +150,7 @@ const questions = [
   },
   {
     section: "🌍 Personality",
-    art: "assets/questions/q15.svg",
+    art: "assets/questions/q15.png",
     title: "15. The Lion Turtle speaks in riddles for what feels like forever before asking:",
     quote: "\"What does your heart pursue, when your journey is through?\"",
     type: "choice",
@@ -165,7 +165,7 @@ const questions = [
     section: "🌍 Personality",
     art: "assets/questions/q16.svg",
     title: "16. Messenger Hawk (Part 2) 🍆💦",
-    body: "The messenger hawk made it safely to its destination. 🍆💦 Your partner replies with a scroll that's also protected by a secret passcode. Add the <strong>middle two digits</strong> of your secret passcode. 😏",
+    body: "The messenger hawk made it safely to its destination. 🍆💦 Your lover replies with a scroll that's also protected by a secret passcode. Add the <strong>middle two digits</strong> of your secret passcode. 😏",
     helper: "(Android: Use your Secure Folder passcode. iPhone: Use your Snapchat \"For My Eyes Only\" passcode.)<br><br><strong>Example:</strong> If your passcode is 1234, 2 + 3, so your answer would be 5.",
     type: "number",
     min: 0,
