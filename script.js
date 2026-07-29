@@ -408,7 +408,7 @@ function showResults() {
   $("resultTitle").textContent = `${r.core}bender`;
   $("resultCard").innerHTML = `
     <div class="result-portrait result-${r.core.toLowerCase()}" data-element="${r.core.toLowerCase()}">
-      <img class="result-art" src="assets/results/${r.core.toLowerCase()}.svg" alt="Original cinematic ${r.core}bender result art">
+      <img class="result-art" src="assets/results/${r.core.toLowerCase()}.png" alt="Original cinematic ${r.core}bender result art">
       <div class="portrait-aura" aria-hidden="true"></div>
       <div class="trait-orbit">
         ${visualToken("kink", r.subKink, "Kink")}
@@ -611,7 +611,7 @@ async function drawResultCard() {
   ctx.fillText("Avatar Kink Quiz", 540, 145);
 
   const art = new Image();
-  art.src = `assets/results/${r.core.toLowerCase()}.svg`;
+  art.src = `assets/results/${r.core.toLowerCase()}.png`;
   try {
     await art.decode();
     ctx.save();
