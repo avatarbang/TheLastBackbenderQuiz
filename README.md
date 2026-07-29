@@ -7,8 +7,6 @@ A static, mobile-friendly fan-made quiz that can be hosted free on GitHub Pages,
 - `index.html`
 - `style.css`
 - `script.js`
-- `assets/questions/` — 16 original question illustrations
-- `assets/results/` — 4 elemental result illustrations
 
 ## Publish with GitHub Pages
 
@@ -28,7 +26,7 @@ Drag the unzipped folder into Netlify’s manual deploy area.
 - The quiz never asks users to enter a full passcode, only a two-digit sum.
 - No answers are sent to a server.
 - The scoring key is inside `script.js`, mainly in `calculateResults()`.
-- This is an unofficial fan project. The included artwork is original, generic elemental fan art and does not use official character images.
+- This is an unofficial fan project and includes no official artwork.
 - The current scoring uses the answer key drafted in the conversation and can be edited later.
 
 
@@ -42,8 +40,3 @@ Drag the unzipped folder into Netlify’s manual deploy area.
 - A special zero-result Easter egg for Questions 8 and 16
 
 The soundtrack is generated in the browser with Web Audio and does not use copyrighted Avatar music.
-
-
-## Dynamic visual result system
-
-The result scene now reacts to all six calculated dimensions. The base illustration follows the core element, while floating visual tokens change for sub-bending kink, love style, first-impression mask, hidden trait, and relationship quirk. Question wording and scoring were not changed.
