@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Favorite Couple">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9b3d58"/>
+      <stop offset="1" stop-color="#e9a66f"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#fff" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-opacity=".35"/></filter>
+  </defs>
+  <rect width="1200" height="675" rx="44" fill="url(#bg)"/>
+  <circle cx="1015" cy="120" r="240" fill="url(#glow)"/>
+  <circle cx="150" cy="610" r="270" fill="#111" opacity=".16"/>
+  <path d="M0 515 Q260 425 500 530 T1200 485 V675 H0Z" fill="#111" opacity=".22"/>
+  <g filter="url(#shadow)">
+    <circle cx="600" cy="278" r="150" fill="#111" opacity=".34"/>
+    <text x="600" y="330" text-anchor="middle" font-size="145" font-family="Arial, sans-serif">❤️</text>
+  </g>
+  <text x="600" y="510" text-anchor="middle" fill="#fff8ec" font-size="58" font-weight="700" font-family="Georgia, serif">Favorite Couple</text>
+  <text x="600" y="565" text-anchor="middle" fill="#fff" opacity=".83" font-size="26" font-family="Arial, sans-serif">Two figures beneath four elemental banners</text>
+  <text x="48" y="60" fill="#fff" opacity=".72" font-size="22" letter-spacing="4" font-family="Arial, sans-serif">ORIGINAL FAN-MADE ART</text>
+</svg>
