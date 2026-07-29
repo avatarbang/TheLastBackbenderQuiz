@@ -1,116 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Avatar Kink Quiz — Layout Preview</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An unofficial, fan-made adult elemental personality quiz." />
+  <title>Avatar Kink Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="preview-shell">
-    <header class="preview-header">
-      <div>
-        <p class="eyebrow">Working layout preview</p>
-        <h1>🔥 Avatar Kink Quiz</h1>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div id="elementFX" class="element-fx" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <section id="ageGate" class="panel age-gate">
+      <div class="seal">18+</div>
+      <p class="eyebrow">Unofficial fan-made quiz</p>
+      <h1>🔥 Avatar Kink Quiz</h1>
+      <p>This quiz contains adult humor and sexual references. You must be 18 or older to continue.</p>
+      <div class="intro-art" aria-hidden="true">
+        <span>🔥</span><span>🌊</span><span>🌍</span><span>🌪️</span>
       </div>
-      <div class="view-switch" role="group" aria-label="Preview screen">
-        <button class="switch-btn active" data-view="question">Question</button>
-        <button class="switch-btn" data-view="result">Result</button>
-      </div>
-    </header>
-
-    <section id="questionView" class="screen">
-      <div class="ornament-line"><span>🔥</span><span>🌊</span><span>🌍</span><span>🌪️</span></div>
-
-      <article class="question-frame">
-        <div class="hero-art">
-          <img src="assets/question-date-preview.jpg" alt="Cinematic fantasy date scene beside water and lantern-lit architecture">
-          <div class="hero-shade"></div>
-          <div class="question-heading">
-            <p class="section-label">❤️ Love</p>
-            <h2>2. Which date sounds the most romantic?</h2>
-          </div>
-        </div>
-
-        <div class="answer-grid">
-          <button class="answer-card">
-            <span class="choice-letter">A</span>
-            <span class="choice-copy"><b>🌅 Watching the sunset at Ember Island.</b><small>Warm shoreline, glowing horizon, and dangerous levels of eye contact.</small></span>
-          </button>
-          <button class="answer-card">
-            <span class="choice-letter">B</span>
-            <span class="choice-copy"><b>🌙 A moonlit canoe ride through the Southern Water Tribe.</b><small>Cold air, quiet water, and an excuse to sit very close.</small></span>
-          </button>
-          <button class="answer-card">
-            <span class="choice-letter">C</span>
-            <span class="choice-copy"><b>🍵 Tea at the Jasmine Dragon followed by a walk through Ba Sing Se.</b><small>Soft, intimate, and suspiciously relationship-coded.</small></span>
-          </button>
-          <button class="answer-card">
-            <span class="choice-letter">D</span>
-            <span class="choice-copy"><b>🚨 Breaking into a restricted Fire Nation palace because dates are better with a felony.</b><small>Terrible judgment. Incredible chemistry.</small></span>
-          </button>
-        </div>
-
-        <footer class="quiz-footer">
-          <button class="nav-btn">← Back</button>
-          <div class="progress-wrap">
-            <div class="progress-copy"><span>2</span>/16</div>
-            <div class="progress-track"><div class="progress-fill"></div></div>
-          </div>
-          <button class="nav-btn primary">Next →</button>
-        </footer>
-      </article>
+      <button id="enterQuiz" class="primary-btn">I’m 18 or older</button>
+      <p class="legal">Not affiliated with or endorsed by Nickelodeon, Paramount, or the creators of Avatar.</p>
     </section>
 
-    <section id="resultView" class="screen hidden">
-      <article class="result-frame fire-theme">
-        <div class="result-art-panel">
-          <img src="assets/fire-result-preview.jpg" alt="Cinematic firebender woman surrounded by flames and a dragon-shaped fire spirit">
-          <div class="result-vignette"></div>
-          <div class="result-title">
-            <p class="section-label">Your elemental profile</p>
-            <h2>🔥 Firebender</h2>
-            <p>The Wild Spark</p>
-          </div>
-          <div class="floating-seal seal-one">🐉</div>
-          <div class="floating-seal seal-two">❤️‍🔥</div>
-          <div class="floating-seal seal-three">😏</div>
+    <section id="quizApp" class="hidden">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="sectionLabel">❤️ Love</p>
+          <h1>🔥 Avatar Kink Quiz</h1>
         </div>
-
-        <div class="result-details">
-          <div class="result-chip">
-            <span>⚙️</span>
-            <div><small>Sub-bending Kink</small><strong>Dragon Fire Kink</strong></div>
-          </div>
-          <div class="result-chip">
-            <span>❤️</span>
-            <div><small>Love Style</small><strong>Ride or Die Love Style</strong></div>
-          </div>
-          <div class="result-chip">
-            <span>🎭</span>
-            <div><small>Mask</small><strong>Fire Energy</strong></div>
-          </div>
-          <div class="result-chip">
-            <span>🔒</span>
-            <div><small>Hidden Trait</small><strong>Whimsical</strong></div>
-          </div>
-          <div class="result-chip wide">
-            <span>📜</span>
-            <div><small>Relationship Quirk</small><strong>Likely to accidentally flirt with the cashier.</strong></div>
-          </div>
+        <div class="topbar-actions">
+          <button id="musicBtn" class="icon-btn" type="button" aria-label="Toggle ambient music" title="Toggle ambient music">♪</button>
+          <div class="progress-copy"><span id="questionCount">1</span>/16</div>
         </div>
+      </header>
 
-        <div class="result-quote">“You don’t just bring the heat. You are the whole damn flame.”</div>
+      <div class="progress-track" aria-hidden="true">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
 
+      <section id="questionCard" class="panel question-card" aria-live="polite"></section>
+
+      <nav class="quiz-nav">
+        <button id="backBtn" class="secondary-btn">Back</button>
+        <button id="nextBtn" class="primary-btn">Next</button>
+      </nav>
+    </section>
+
+    <section id="resultScreen" class="hidden">
+      <div class="panel result-panel">
+        <p class="eyebrow">Your elemental profile</p>
+        <h1 id="resultTitle">Your Result</h1>
+        <div id="resultCard" class="result-card"></div>
         <div class="result-actions">
-          <button class="nav-btn primary">Share Result Card</button>
-          <button class="nav-btn">Save Result Card</button>
+          <button id="shareCardBtn" class="primary-btn">Share Result Card</button>
+          <button id="saveCardBtn" class="secondary-btn">Save Result Card</button>
+          <button id="copyBtn" class="secondary-btn">Copy Text</button>
+          <button id="restartBtn" class="ghost-btn">Retake Quiz</button>
         </div>
-      </article>
+        <canvas id="shareCanvas" width="1080" height="1350" class="share-canvas" aria-hidden="true"></canvas>
+        <p class="legal">This unofficial fan project uses no official artwork and stores no answers on a server.</p>
+      </div>
     </section>
-
-    <p class="preview-note">This preview changes the layout and presentation only. The final build would keep the exact question text, answer choices, emojis, and scoring from your current JavaScript.</p>
   </main>
+
   <script src="script.js"></script>
 </body>
 </html>
