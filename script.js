@@ -163,7 +163,7 @@ const questions = [
   },
   {
     section: "🌍 Personality",
-    art: "assets/questions/q16.svg",
+    art: "assets/questions/q16.png",
     title: "16. Messenger Hawk (Part 2) 🍆💦",
     body: "The messenger hawk made it safely to its destination. 🍆💦 Your lover replies with a scroll that's also protected by a secret passcode. Add the <strong>middle two digits</strong> of your secret passcode. 😏",
     helper: "(Android: Use your Secure Folder passcode. iPhone: Use your Snapchat \"For My Eyes Only\" passcode.)<br><br><strong>Example:</strong> If your passcode is 1234, 2 + 3, so your answer would be 5.",
