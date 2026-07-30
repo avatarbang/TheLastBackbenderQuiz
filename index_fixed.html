@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An unofficial, fan-made adult elemental personality quiz." />
+  <title>Avatar Kink Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div id="elementFX" class="element-fx" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <section id="ageGate" class="age-gate cinematic-intro" aria-label="Quiz introduction">
+      <div class="intro-poster">
+        <img
+          class="intro-poster-image"
+          src="assets/intro/hero.png?v=2"
+          alt="Cinematic four-element fantasy landscape with a robed figure facing the four nations"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="intro-vignette" aria-hidden="true"></div>
+        <div class="intro-particles" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="intro-controls">
+          <button id="introMusicBtn" class="intro-icon-btn" type="button" aria-label="Toggle ambient music" title="Toggle ambient music">♪</button>
+        </div>
+
+        <div class="intro-content">
+          <button id="enterQuiz" class="journey-btn" type="button">
+            <span class="journey-ornament" aria-hidden="true">◌</span>
+            <span>Begin Journey</span>
+          </button>
+
+          <div class="intro-meta" aria-label="Adult quiz, estimated completion time two to three minutes">
+            <span class="intro-age">18+</span>
+            <span class="intro-divider" aria-hidden="true">•</span>
+            <span>2–3 Minutes</span>
+          </div>
+
+          <p class="intro-disclaimer">Unofficial fan-made parody quiz. Not affiliated with or endorsed by Nickelodeon, Paramount, or the creators of Avatar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="quizApp" class="hidden">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="sectionLabel">❤️ Love</p>
+          <h1>🔥 Avatar Kink Quiz</h1>
+        </div>
+        <div class="topbar-actions">
+          <div class="progress-copy"><span id="questionCount">1</span>/16</div>
+        </div>
+      </header>
+
+      <div class="progress-track" aria-hidden="true">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <section id="questionCard" class="panel question-card" aria-live="polite"></section>
+
+      <nav class="quiz-nav">
+        <button id="backBtn" class="secondary-btn">Back</button>
+        <button id="nextBtn" class="primary-btn">Next</button>
+      </nav>
+    </section>
+
+    <section id="resultScreen" class="hidden">
+      <div class="panel result-panel">
+        <p class="eyebrow">Your elemental profile</p>
+        <h1 id="resultTitle">Your Result</h1>
+        <div id="resultCard" class="result-card"></div>
+        <div class="result-actions">
+          <button id="shareCardBtn" class="primary-btn">Share Result Card</button>
+          <button id="saveCardBtn" class="secondary-btn">Save Result Card</button>
+          <button id="copyBtn" class="secondary-btn">Copy Text</button>
+          <button id="restartBtn" class="ghost-btn">Retake Quiz</button>
+        </div>
+        <canvas id="shareCanvas" width="1080" height="1350" class="share-canvas" aria-hidden="true"></canvas>
+        <p class="legal">This unofficial fan project uses no official artwork and stores no answers on a server.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
