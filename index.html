@@ -16,16 +16,39 @@
   <div id="elementFX" class="element-fx" aria-hidden="true"></div>
 
   <main class="app-shell">
-    <section id="ageGate" class="panel age-gate">
-      <div class="seal">18+</div>
-      <p class="eyebrow">Unofficial fan-made quiz</p>
-      <h1>🔥 Avatar Kink Quiz</h1>
-      <p>This quiz contains adult humor and sexual references. You must be 18 or older to continue.</p>
-      <div class="intro-art" aria-hidden="true">
-        <span>🔥</span><span>🌊</span><span>🌍</span><span>🌪️</span>
+    <section id="ageGate" class="age-gate cinematic-intro" aria-label="Quiz introduction">
+      <div class="intro-poster">
+        <img
+          class="intro-poster-image"
+          src="assets/intro/hero.png"
+          alt="Cinematic four-element fantasy landscape with a robed figure facing the four nations"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="intro-vignette" aria-hidden="true"></div>
+        <div class="intro-particles" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="intro-controls">
+          <button id="introMusicBtn" class="intro-icon-btn" type="button" aria-label="Toggle ambient music" title="Toggle ambient music">♪</button>
+        </div>
+
+        <div class="intro-content">
+          <button id="enterQuiz" class="journey-btn" type="button">
+            <span class="journey-ornament" aria-hidden="true">◌</span>
+            <span>Begin Journey</span>
+          </button>
+
+          <div class="intro-meta" aria-label="Adult quiz, estimated completion time two to three minutes">
+            <span class="intro-age">18+</span>
+            <span class="intro-divider" aria-hidden="true">•</span>
+            <span>2–3 Minutes</span>
+          </div>
+
+          <p class="intro-disclaimer">Unofficial fan-made parody quiz. Not affiliated with or endorsed by Nickelodeon, Paramount, or the creators of Avatar.</p>
+        </div>
       </div>
-      <button id="enterQuiz" class="primary-btn">I’m 18 or older</button>
-      <p class="legal">Not affiliated with or endorsed by Nickelodeon, Paramount, or the creators of Avatar.</p>
     </section>
 
     <section id="quizApp" class="hidden">
@@ -35,7 +58,6 @@
           <h1>🔥 Avatar Kink Quiz</h1>
         </div>
         <div class="topbar-actions">
-          <button id="musicBtn" class="icon-btn" type="button" aria-label="Toggle ambient music" title="Toggle ambient music">♪</button>
           <div class="progress-copy"><span id="questionCount">1</span>/16</div>
         </div>
       </header>

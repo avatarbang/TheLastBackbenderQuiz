@@ -215,9 +215,17 @@ const backBtn = $("backBtn");
 const nextBtn = $("nextBtn");
 
 $("enterQuiz").addEventListener("click", () => {
-  ageGate.classList.add("hidden");
-  quizApp.classList.remove("hidden");
-  renderQuestion();
+  ageGate.classList.add("intro-leaving");
+
+  window.setTimeout(() => {
+    ageGate.classList.add("hidden");
+    quizApp.classList.remove("hidden");
+    quizApp.classList.add("quiz-entering");
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    window.setTimeout(() => quizApp.classList.remove("quiz-entering"), 700);
+  }, 520);
 });
 
 
@@ -527,16 +535,20 @@ function startAmbientMusic() {
   }
 
   musicOn = true;
-  $("musicBtn").classList.add("active");
-  $("musicBtn").textContent = "♫";
+  document.querySelectorAll("#introMusicBtn, #musicBtn").forEach(btn => {
+    btn.classList.add("active");
+    btn.textContent = "♫";
+  });
   playTone();
   musicTimer = setInterval(playTone, 2200);
 }
 
 function stopAmbientMusic() {
   musicOn = false;
-  $("musicBtn").classList.remove("active");
-  $("musicBtn").textContent = "♪";
+  document.querySelectorAll("#introMusicBtn, #musicBtn").forEach(btn => {
+    btn.classList.remove("active");
+    btn.textContent = "♪";
+  });
   if (musicTimer) clearInterval(musicTimer);
   musicTimer = null;
   musicNodes.forEach(node => {
@@ -545,13 +557,15 @@ function stopAmbientMusic() {
   musicNodes = [];
 }
 
-$("musicBtn").addEventListener("click", async () => {
-  if (musicOn) {
-    stopAmbientMusic();
-  } else {
-    startAmbientMusic();
-    if (audioContext?.state === "suspended") await audioContext.resume();
-  }
+document.querySelectorAll("#introMusicBtn, #musicBtn").forEach(btn => {
+  btn.addEventListener("click", async () => {
+    if (musicOn) {
+      stopAmbientMusic();
+    } else {
+      startAmbientMusic();
+      if (audioContext?.state === "suspended") await audioContext.resume();
+    }
+  });
 });
 
 // ----- Elemental particles -----
