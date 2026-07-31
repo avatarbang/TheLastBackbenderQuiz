@@ -81,7 +81,7 @@ const questions = [
     type: "number",
     min: 0,
     max: 18,
-    label: "Enter a number from 0–18"
+    label: "Enter the sum only"
   },
   {
     section: "⚙️ The Mechanist",
@@ -170,7 +170,7 @@ const questions = [
     type: "number",
     min: 0,
     max: 18,
-    label: "Enter a number from 0–18"
+    label: "Enter the sum only"
   }
 ];
 
@@ -378,14 +378,10 @@ function calculateResults() {
   addScore(mask, ["Air","Water","Earth","Fire"][answers[13]]);
   addScore(mask, ["Air","Water","Fire","Earth"][answers[14]]);
 
-  // Sub-bending Kink: Q5, Q6, Q7, Q9, Q10, Q11
-  addScore(kink, ["Spiritual Projection","Dragon Fire","Metal","Blood"][answers[4]]);
-  addScore(kink, ["Metal","Flight","Lightning","Blood"][answers[5]]);
-  addScore(kink, ["Dragon Fire","Lightning","Metal","Blood","Metal","Blue Fire"][answers[6]]);
-
-  addScore(kink, rangeValue(Number(answers[8]), [[0,"Healing"],[2,"Metal"],[5,"Lightning"],[10,"Lava"],[999,"Combustion"]]));
-  addScore(kink, rangeValue(Number(answers[9]), [[14,"Combustion"],[17,"Lightning"],[20,"Metal"],[24,"Healing"],[999,"Spiritual Projection"]]));
-  addScore(kink, rangeValue(Number(answers[10]), [[0,"Healing"],[2,"Ice"],[5,"Metal"],[10,"Blood"],[999,"Lava"]]));
+  // Sub-bending Kink: Q5, Q6, Q7 only
+  addScore(kink, ["Spiritual Projection","Fire","Metal","Ice"][answers[4]]);
+  addScore(kink, ["Sand","Flight","Lightning","Blood"][answers[5]]);
+  addScore(kink, ["Fire","Lava","Metal","Blood","Sand","Fire"][answers[6]]);
 
   const core = winner(element, "Air");
   const loveStyle = winner(love, "Romantic");
@@ -409,14 +405,9 @@ function kinkDisplayName(value){
     "Blood":"Bloodbending",
     "Metal":"Metalbending",
     "Lightning":"Lightningbending",
-    "Blue Fire":"Blue Firebending",
-    "Dragon Fire":"Dragon Firebending",
     "Ice":"Icebending",
     "Sand":"Sandbending",
-    "Lava":"Lavabending",
-    "Combustion":"Combustionbending",
-    "Flight":"Flight",
-    "Spiritual Projection":"Spiritual Projection"
+    "Lava":"Lavabending"
   };
   return map[value] || value;
 }
@@ -439,7 +430,7 @@ function elementBender(value){
     "Earth":"Earthbender",
     "Fire":"Firebender"
   };
-  return map[value]||value;
+  return map[value] || value;
 }
 
 function slug(value) {
@@ -448,8 +439,8 @@ function slug(value) {
 
 const traitVisuals = {
   kink: {
-    "Dragon Fire":"🐉", "Lightning":"⚡", "Blue Fire":"💙", "Metal":"⛓️", "Blood":"🩸",
-    "Healing":"✨", "Ice":"❄️", "Lava":"🌋", "Combustion":"💥", "Flight":"🪽", "Spiritual Projection":"👻"
+    "Fire":"🔥", "Lightning":"⚡", "Metal":"⛓️", "Blood":"🩸",
+    "Ice":"❄️", "Sand":"🏜️", "Lava":"🌋", "Flight":"🪽", "Spiritual Projection":"👻"
   },
   love: {
     "Romantic":"🌹", "Independent":"🗝️", "Best Friend":"🤝", "Ride or Die":"🗡️",
@@ -459,9 +450,9 @@ const traitVisuals = {
   mask: { Fire:"🔥", Water:"🌊", Earth:"🪨", Air:"🌪️" }
 };
 
-function visualToken(group, value, label) {
-  const icon = traitVisuals[group]?.[value] || (group === "hidden" ? "🔒" : "📜");
-  return `<div class="scene-token token-${group} token-${slug(value)}" title="${label}: ${value}">
+function visualToken(group, value, label, rawValue = value) {
+  const icon = traitVisuals[group]?.[rawValue] || (group === "hidden" ? "🔒" : "📜");
+  return `<div class="scene-token token-${group} token-${slug(rawValue)}" title="${label}: ${value}">
     <span class="token-icon">${icon}</span><small>${label}</small><strong>${value}</strong>
   </div>`;
 }
@@ -477,9 +468,9 @@ function showResults() {
       <img class="result-art" src="assets/results/${r.core.toLowerCase()}.png" alt="Original cinematic ${r.core}bender result art">
       <div class="portrait-aura" aria-hidden="true"></div>
       <div class="trait-orbit">
-        ${visualToken("kink", kinkDisplayName(r.subKink), "Kink")}
-        ${visualToken("love", elementBender(r.loveStyle), "Love Style")}
-        ${visualToken("mask", elementBender(r.firstImpression), "Mask")}
+        ${visualToken("kink", kinkDisplayName(r.subKink), "Kink", r.subKink)}
+        ${visualToken("love", elementBender(r.loveStyle), "Love Style", r.loveStyle)}
+        ${visualToken("mask", elementBender(r.firstImpression), "Mask", r.firstImpression)}
         ${visualToken("hidden", r.hidden, "Hidden")}
         ${visualToken("quirk", r.quirk, "Quirk")}
       </div>
@@ -505,8 +496,8 @@ function resultText() {
   const r = calculateResults();
   return `🔥 ${r.core}bender
 ⚙️ ${kinkDisplayName(r.subKink)} Kink
-❤️ ${r.loveStyle} Love Style
-🎭 Mask (First Impression): ${r.firstImpression} Energy
+❤️ Love Style: ${elementBender(r.loveStyle)}
+🎭 Mask: ${elementBender(r.firstImpression)}
 🔒 Hidden Trait: ${r.hidden}
 📜 Relationship Quirk: ${r.quirk}
 
@@ -699,8 +690,8 @@ async function drawResultCard() {
 
   const canvasTokens = [
     [traitVisuals.kink[r.subKink] || "⚙️", kinkDisplayName(r.subKink)],
-    [traitVisuals.mask[r.firstImpression] || "❤️", elementBender(r.loveStyle)],
-    [traitVisuals.mask[r.firstImpression] || "🎭", `${r.firstImpression} Energy`]
+    [traitVisuals.love[r.loveStyle] || "❤️", elementBender(r.loveStyle)],
+    [traitVisuals.mask[r.firstImpression] || "🎭", elementBender(r.firstImpression)]
   ];
   ctx.textAlign = "center";
   canvasTokens.forEach(([icon, text], i) => {
