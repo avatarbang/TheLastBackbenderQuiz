@@ -470,7 +470,7 @@ function showResults() {
       <div class="trait-orbit">
         ${visualToken("kink", kinkDisplayName(r.subKink), "Kink", r.subKink)}
         ${visualToken("love", elementBender(r.loveStyle), "Love Style", r.loveStyle)}
-        ${visualToken("mask", elementBender(r.firstImpression), "Mask", r.firstImpression)}
+        ${visualToken("mask", elementBender(r.firstImpression), "Mask (First Impression)", r.firstImpression)}
         ${visualToken("hidden", r.hidden, "Hidden")}
         ${visualToken("quirk", r.quirk, "Quirk")}
       </div>
@@ -480,7 +480,7 @@ function showResults() {
       ${resultRow("🔥 Core Element", `${r.core}bender`)}
       ${resultRow("⚙️ Sub-bending Kink", `${kinkDisplayName(r.subKink)} Kink`)}
       ${resultRow("❤️ Love Style", elementBender(r.loveStyle))}
-      ${resultRow("🎭 Mask", elementBender(r.firstImpression))}
+      ${resultRow("🎭 Mask (First Impression)", elementBender(r.firstImpression))}
       ${resultRow("🔒 Hidden Trait", r.hidden)}
       ${resultRow("📜 Relationship Quirk", r.quirk)}
     </div>
@@ -497,7 +497,7 @@ function resultText() {
   return `🔥 ${r.core}bender
 ⚙️ ${kinkDisplayName(r.subKink)} Kink
 ❤️ Love Style: ${elementBender(r.loveStyle)}
-🎭 Mask: ${elementBender(r.firstImpression)}
+🎭 Mask (First Impression): ${elementBender(r.firstImpression)}
 🔒 Hidden Trait: ${r.hidden}
 📜 Relationship Quirk: ${r.quirk}
 
@@ -710,7 +710,7 @@ async function drawResultCard() {
   const rows = [
     ["⚙️ SUB-BENDING KINK", `${kinkDisplayName(r.subKink)} Kink`],
     ["❤️ LOVE STYLE", elementBender(r.loveStyle)],
-    ["🎭 MASK", elementBender(r.firstImpression)],
+    ["🎭 MASK (FIRST IMPRESSION)", elementBender(r.firstImpression)],
     ["🔒 HIDDEN TRAIT", r.hidden],
     ["📜 RELATIONSHIP QUIRK", r.quirk]
   ];
