@@ -471,7 +471,7 @@ function resultText() {
 🔒 Hidden Trait: ${r.hidden}
 📜 Relationship Quirk: ${r.quirk}
 
-Avatar Kink Quiz — unofficial fan-made quiz`;
+The Last Backbender Quiz — unofficial fan-made quiz`;
 }
 
 $("copyBtn").addEventListener("click", async () => {
@@ -641,7 +641,7 @@ async function drawResultCard() {
 
   ctx.fillStyle = "#f6efe5";
   ctx.font = "700 62px Cinzel, serif";
-  ctx.fillText("Avatar Kink Quiz", 540, 145);
+  ctx.fillText("The Last Backbender Quiz", 540, 145);
 
   const art = new Image();
   art.src = `assets/results/${r.core.toLowerCase()}.png`;
@@ -722,7 +722,7 @@ $("saveCardBtn").addEventListener("click", async () => {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "avatar-kink-quiz-result.png";
+  a.download = "the-last-backbender-quiz-result.png";
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
@@ -730,24 +730,34 @@ $("saveCardBtn").addEventListener("click", async () => {
 $("shareCardBtn").addEventListener("click", async () => {
   const canvas = await drawResultCard();
   const blob = await canvasToBlob(canvas);
-  const file = new File([blob], "avatar-kink-quiz-result.png", { type: "image/png" });
+  const file = new File([blob], "the-last-backbender-quiz-result.png", { type: "image/png" });
 
   if (navigator.canShare?.({ files: [file] })) {
     await navigator.share({
-      title: "My Avatar Kink Quiz Result",
-      text: "Here’s my elemental profile.",
+      title: "My Last Backbender Quiz Result",
+      text: `🔥 I just took The Last Backbender Quiz and got ${r.core}bender!
+
+Think you know which bender you are?
+
+Take the quiz:
+https://thelastbackbenderquiz.netlify.app/`,
       files: [file]
     });
   } else if (navigator.share) {
     await navigator.share({
-      title: "My Avatar Kink Quiz Result",
-      text: resultText()
+      title: "My Last Backbender Quiz Result",
+      text: `${resultText()}
+
+🔥 Think you know which bender you are?
+
+Take the quiz:
+https://thelastbackbenderquiz.netlify.app/`
     });
   } else {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "avatar-kink-quiz-result.png";
+    a.download = "the-last-backbender-quiz-result.png";
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
