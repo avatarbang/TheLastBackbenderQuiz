@@ -378,14 +378,10 @@ function calculateResults() {
   addScore(mask, ["Air","Water","Earth","Fire"][answers[13]]);
   addScore(mask, ["Air","Water","Fire","Earth"][answers[14]]);
 
-  // Sub-bending Kink: Q5, Q6, Q7, Q9, Q10, Q11
-  addScore(kink, ["Spiritual Projection","Dragon Fire","Metal","Blood"][answers[4]]);
-  addScore(kink, ["Metal","Flight","Lightning","Blood"][answers[5]]);
-  addScore(kink, ["Dragon Fire","Lightning","Metal","Blood","Metal","Blue Fire"][answers[6]]);
-
-  addScore(kink, rangeValue(Number(answers[8]), [[0,"Healing"],[2,"Metal"],[5,"Lightning"],[10,"Lava"],[999,"Combustion"]]));
-  addScore(kink, rangeValue(Number(answers[9]), [[14,"Combustion"],[17,"Lightning"],[20,"Metal"],[24,"Healing"],[999,"Spiritual Projection"]]));
-  addScore(kink, rangeValue(Number(answers[10]), [[0,"Healing"],[2,"Ice"],[5,"Metal"],[10,"Blood"],[999,"Lava"]]));
+  // Sub-bending Kink: Q5, Q6, Q7 only
+  addScore(kink, ["Spiritual Projection","Fire","Metal","Ice"][answers[4]]);
+  addScore(kink, ["Sand","Flight","Lightning","Blood"][answers[5]]);
+  addScore(kink, ["Fire","Lava","Metal","Blood","Sand","Fire"][answers[6]]);
 
   const core = winner(element, "Air");
   const loveStyle = winner(love, "Romantic");
@@ -409,14 +405,9 @@ function kinkDisplayName(value){
     "Blood":"Bloodbending",
     "Metal":"Metalbending",
     "Lightning":"Lightningbending",
-    "Blue Fire":"Blue Firebending",
-    "Dragon Fire":"Dragon Firebending",
     "Ice":"Icebending",
     "Sand":"Sandbending",
-    "Lava":"Lavabending",
-    "Combustion":"Combustionbending",
-    "Flight":"Flight",
-    "Spiritual Projection":"Spiritual Projection"
+    "Lava":"Lavabending"
   };
   return map[value] || value;
 }
@@ -427,8 +418,8 @@ function slug(value) {
 
 const traitVisuals = {
   kink: {
-    "Dragon Fire":"🐉", "Lightning":"⚡", "Blue Fire":"💙", "Metal":"⛓️", "Blood":"🩸",
-    "Healing":"✨", "Ice":"❄️", "Lava":"🌋", "Combustion":"💥", "Flight":"🪽", "Spiritual Projection":"👻"
+    "Fire":"🔥", "Lightning":"⚡", "Metal":"⛓️", "Blood":"🩸",
+    "Ice":"❄️", "Sand":"🏜️", "Lava":"🌋", "Flight":"🪽", "Spiritual Projection":"👻"
   },
   love: {
     "Romantic":"🌹", "Independent":"🗝️", "Best Friend":"🤝", "Ride or Die":"🗡️",
