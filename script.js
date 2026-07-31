@@ -81,7 +81,7 @@ const questions = [
     type: "number",
     min: 0,
     max: 18,
-    label: "Enter the sum only"
+    label: "Enter a number from 0–18"
   },
   {
     section: "⚙️ The Mechanist",
@@ -170,7 +170,7 @@ const questions = [
     type: "number",
     min: 0,
     max: 18,
-    label: "Enter the sum only"
+    label: "Enter a number from 0–18"
   }
 ];
 
@@ -379,13 +379,13 @@ function calculateResults() {
   addScore(mask, ["Air","Water","Fire","Earth"][answers[14]]);
 
   // Sub-bending Kink: Q5, Q6, Q7, Q9, Q10, Q11
-  addScore(kink, ["Spiritual Projection","Dragon Fire","Sand","Ice"][answers[4]]);
+  addScore(kink, ["Spiritual Projection","Dragon Fire","Metal","Blood"][answers[4]]);
   addScore(kink, ["Metal","Flight","Lightning","Blood"][answers[5]]);
-  addScore(kink, ["Dragon Fire","Lava","Metal","Blood","Sand","Blue Fire"][answers[6]]);
+  addScore(kink, ["Dragon Fire","Lightning","Metal","Blood","Metal","Blue Fire"][answers[6]]);
 
-  addScore(kink, rangeValue(Number(answers[8]), [[0,"Ice"],[2,"Metal"],[5,"Lightning"],[10,"Lava"],[999,"Combustion"]]));
-  addScore(kink, rangeValue(Number(answers[9]), [[14,"Combustion"],[17,"Lightning"],[20,"Metal"],[24,"Ice"],[999,"Spiritual Projection"]]));
-  addScore(kink, rangeValue(Number(answers[10]), [[0,"Ice"],[2,"Ice"],[5,"Metal"],[10,"Blood"],[999,"Lava"]]));
+  addScore(kink, rangeValue(Number(answers[8]), [[0,"Healing"],[2,"Metal"],[5,"Lightning"],[10,"Lava"],[999,"Combustion"]]));
+  addScore(kink, rangeValue(Number(answers[9]), [[14,"Combustion"],[17,"Lightning"],[20,"Metal"],[24,"Healing"],[999,"Spiritual Projection"]]));
+  addScore(kink, rangeValue(Number(answers[10]), [[0,"Healing"],[2,"Ice"],[5,"Metal"],[10,"Blood"],[999,"Lava"]]));
 
   const core = winner(element, "Air");
   const loveStyle = winner(love, "Romantic");
@@ -403,32 +403,32 @@ function calculateResults() {
   return { core, loveStyle, firstImpression, subKink, hidden, quirk };
 }
 
-function slug(value) {
-  return String(value).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+function kinkDisplayName(value){
+  const map={
+    "Blood":"Bloodbending",
+    "Metal":"Metalbending",
+    "Lightning":"Lightningbending",
+    "Blue Fire":"Blue Firebending",
+    "Dragon Fire":"Dragon Firebending",
+    "Ice":"Icebending",
+    "Sand":"Sandbending",
+    "Lava":"Lavabending",
+    "Combustion":"Combustionbending",
+    "Flight":"Flight",
+    "Spiritual Projection":"Spiritual Projection"
+  };
+  return map[value] || value;
 }
 
-const kinkDisplayNames = {
-  "Dragon Fire": "Dragon Firebending",
-  "Lightning": "Lightningbending",
-  "Blue Fire": "Blue Firebending",
-  "Metal": "Metalbending",
-  "Blood": "Bloodbending",
-  "Ice": "Icebending",
-  "Sand": "Sandbending",
-  "Lava": "Lavabending",
-  "Combustion": "Combustionbending",
-  "Flight": "Flight",
-  "Spiritual Projection": "Spiritual Projection"
-};
-
-function kinkDisplayName(value) {
-  return kinkDisplayNames[value] || `${value}bending`;
+function slug(value) {
+  return String(value).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
 const traitVisuals = {
   kink: {
     "Dragon Fire":"🐉", "Lightning":"⚡", "Blue Fire":"💙", "Metal":"⛓️", "Blood":"🩸",
-    "Ice":"✨", "Ice":"❄️", "Sand":"🏜️", "Lava":"🌋", "Combustion":"💥", "Flight":"🪽", "Spiritual Projection":"👻"
+    "Healing":"✨", "Ice":"❄️", "Lava":"🌋", "Combustion":"💥", "Flight":"🪽", "Spiritual Projection":"👻"
   },
   love: {
     "Romantic":"🌹", "Independent":"🗝️", "Best Friend":"🤝", "Ride or Die":"🗡️",
@@ -438,10 +438,10 @@ const traitVisuals = {
   mask: { Fire:"🔥", Water:"🌊", Earth:"🪨", Air:"🌪️" }
 };
 
-function visualToken(group, value, label, displayValue = value) {
+function visualToken(group, value, label) {
   const icon = traitVisuals[group]?.[value] || (group === "hidden" ? "🔒" : "📜");
   return `<div class="scene-token token-${group} token-${slug(value)}" title="${label}: ${value}">
-    <span class="token-icon">${icon}</span><small>${label}</small><strong>${displayValue}</strong>
+    <span class="token-icon">${icon}</span><small>${label}</small><strong>${value}</strong>
   </div>`;
 }
 
@@ -456,7 +456,7 @@ function showResults() {
       <img class="result-art" src="assets/results/${r.core.toLowerCase()}.png" alt="Original cinematic ${r.core}bender result art">
       <div class="portrait-aura" aria-hidden="true"></div>
       <div class="trait-orbit">
-        ${visualToken("kink", r.subKink, "Kink", kinkDisplayName(r.subKink))}
+        ${visualToken("kink", r.subKink, "Kink")}
         ${visualToken("love", r.loveStyle, "Love")}
         ${visualToken("mask", r.firstImpression, "Mask")}
         ${visualToken("hidden", r.hidden, "Hidden")}
@@ -489,7 +489,7 @@ function resultText() {
 🔒 Hidden Trait: ${r.hidden}
 📜 Relationship Quirk: ${r.quirk}
 
-The Last Backbender Quiz — unofficial fan-made quiz`;
+Avatar Kink Quiz — unofficial fan-made quiz`;
 }
 
 $("copyBtn").addEventListener("click", async () => {
@@ -659,7 +659,7 @@ async function drawResultCard() {
 
   ctx.fillStyle = "#f6efe5";
   ctx.font = "700 62px Cinzel, serif";
-  ctx.fillText("The Last Backbender Quiz", 540, 145);
+  ctx.fillText("Avatar Kink Quiz", 540, 145);
 
   const art = new Image();
   art.src = `assets/results/${r.core.toLowerCase()}.png`;
@@ -740,7 +740,7 @@ $("saveCardBtn").addEventListener("click", async () => {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "the-last-backbender-quiz-result.png";
+  a.download = "avatar-kink-quiz-result.png";
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
@@ -748,34 +748,24 @@ $("saveCardBtn").addEventListener("click", async () => {
 $("shareCardBtn").addEventListener("click", async () => {
   const canvas = await drawResultCard();
   const blob = await canvasToBlob(canvas);
-  const file = new File([blob], "the-last-backbender-quiz-result.png", { type: "image/png" });
+  const file = new File([blob], "avatar-kink-quiz-result.png", { type: "image/png" });
 
   if (navigator.canShare?.({ files: [file] })) {
     await navigator.share({
-      title: "My Last Backbender Quiz Result",
-      text: `🔥 I just took The Last Backbender Quiz and got ${r.core}bender!
-
-Think you know which bender you are?
-
-Take the quiz:
-https://thelastbackbenderquiz.netlify.app/`,
+      title: "My Avatar Kink Quiz Result",
+      text: "Here’s my elemental profile.",
       files: [file]
     });
   } else if (navigator.share) {
     await navigator.share({
-      title: "My Last Backbender Quiz Result",
-      text: `${resultText()}
-
-🔥 Think you know which bender you are?
-
-Take the quiz:
-https://thelastbackbenderquiz.netlify.app/`
+      title: "My Avatar Kink Quiz Result",
+      text: resultText()
     });
   } else {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "the-last-backbender-quiz-result.png";
+    a.download = "avatar-kink-quiz-result.png";
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
