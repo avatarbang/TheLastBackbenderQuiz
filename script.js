@@ -378,10 +378,14 @@ function calculateResults() {
   addScore(mask, ["Air","Water","Earth","Fire"][answers[13]]);
   addScore(mask, ["Air","Water","Fire","Earth"][answers[14]]);
 
-  // Sub-bending Kink: Q5, Q6, Q7 only
-  addScore(kink, ["Spiritual Projection","Fire","Metal","Ice"][answers[4]]);
-  addScore(kink, ["Sand","Flight","Lightning","Blood"][answers[5]]);
-  addScore(kink, ["Fire","Lava","Metal","Blood","Sand","Fire"][answers[6]]);
+  // Sub-bending Kink: Q5, Q6, Q7, Q9, Q10, Q11
+  addScore(kink, ["Spiritual Projection","Dragon Fire","Metal","Blood"][answers[4]]);
+  addScore(kink, ["Metal","Flight","Lightning","Blood"][answers[5]]);
+  addScore(kink, ["Dragon Fire","Lightning","Metal","Blood","Metal","Blue Fire"][answers[6]]);
+
+  addScore(kink, rangeValue(Number(answers[8]), [[0,"Healing"],[2,"Metal"],[5,"Lightning"],[10,"Lava"],[999,"Combustion"]]));
+  addScore(kink, rangeValue(Number(answers[9]), [[14,"Combustion"],[17,"Lightning"],[20,"Metal"],[24,"Healing"],[999,"Spiritual Projection"]]));
+  addScore(kink, rangeValue(Number(answers[10]), [[0,"Healing"],[2,"Ice"],[5,"Metal"],[10,"Blood"],[999,"Lava"]]));
 
   const core = winner(element, "Air");
   const loveStyle = winner(love, "Romantic");
@@ -405,11 +409,37 @@ function kinkDisplayName(value){
     "Blood":"Bloodbending",
     "Metal":"Metalbending",
     "Lightning":"Lightningbending",
+    "Blue Fire":"Blue Firebending",
+    "Dragon Fire":"Dragon Firebending",
     "Ice":"Icebending",
     "Sand":"Sandbending",
-    "Lava":"Lavabending"
+    "Lava":"Lavabending",
+    "Combustion":"Combustionbending",
+    "Flight":"Flight",
+    "Spiritual Projection":"Spiritual Projection"
   };
   return map[value] || value;
+}
+
+
+function elementBender(value){
+  const map={
+    "Romantic":"Waterbender",
+    "Soulmate":"Waterbender",
+    "Protective":"Earthbender",
+    "Best Friend":"Earthbender",
+    "Independent":"Firebender",
+    "Slow Burn":"Firebender",
+    "Ride or Die":"Firebender",
+    "Adventure":"Airbender",
+    "Golden Retriever":"Airbender",
+    "Chaotic":"Airbender",
+    "Air":"Airbender",
+    "Water":"Waterbender",
+    "Earth":"Earthbender",
+    "Fire":"Firebender"
+  };
+  return map[value]||value;
 }
 
 function slug(value) {
@@ -418,8 +448,8 @@ function slug(value) {
 
 const traitVisuals = {
   kink: {
-    "Fire":"🔥", "Lightning":"⚡", "Metal":"⛓️", "Blood":"🩸",
-    "Ice":"❄️", "Sand":"🏜️", "Lava":"🌋", "Flight":"🪽", "Spiritual Projection":"👻"
+    "Dragon Fire":"🐉", "Lightning":"⚡", "Blue Fire":"💙", "Metal":"⛓️", "Blood":"🩸",
+    "Healing":"✨", "Ice":"❄️", "Lava":"🌋", "Combustion":"💥", "Flight":"🪽", "Spiritual Projection":"👻"
   },
   love: {
     "Romantic":"🌹", "Independent":"🗝️", "Best Friend":"🤝", "Ride or Die":"🗡️",
@@ -447,9 +477,9 @@ function showResults() {
       <img class="result-art" src="assets/results/${r.core.toLowerCase()}.png" alt="Original cinematic ${r.core}bender result art">
       <div class="portrait-aura" aria-hidden="true"></div>
       <div class="trait-orbit">
-        ${visualToken("kink", r.subKink, "Kink")}
-        ${visualToken("love", r.loveStyle, "Love")}
-        ${visualToken("mask", r.firstImpression, "Mask")}
+        ${visualToken("kink", kinkDisplayName(r.subKink), "Kink")}
+        ${visualToken("love", elementBender(r.loveStyle), "Love Style")}
+        ${visualToken("mask", elementBender(r.firstImpression), "Mask")}
         ${visualToken("hidden", r.hidden, "Hidden")}
         ${visualToken("quirk", r.quirk, "Quirk")}
       </div>
@@ -458,8 +488,8 @@ function showResults() {
     <div class="result-breakdown">
       ${resultRow("🔥 Core Element", `${r.core}bender`)}
       ${resultRow("⚙️ Sub-bending Kink", `${kinkDisplayName(r.subKink)} Kink`)}
-      ${resultRow("❤️ Love Style", `${r.loveStyle} Love Style`)}
-      ${resultRow("🎭 Mask (First Impression)", `${r.firstImpression} Energy`)}
+      ${resultRow("❤️ Love Style", elementBender(r.loveStyle))}
+      ${resultRow("🎭 Mask", elementBender(r.firstImpression))}
       ${resultRow("🔒 Hidden Trait", r.hidden)}
       ${resultRow("📜 Relationship Quirk", r.quirk)}
     </div>
@@ -669,7 +699,7 @@ async function drawResultCard() {
 
   const canvasTokens = [
     [traitVisuals.kink[r.subKink] || "⚙️", kinkDisplayName(r.subKink)],
-    [traitVisuals.love[r.loveStyle] || "❤️", r.loveStyle],
+    [traitVisuals.mask[r.firstImpression] || "❤️", elementBender(r.loveStyle)],
     [traitVisuals.mask[r.firstImpression] || "🎭", `${r.firstImpression} Energy`]
   ];
   ctx.textAlign = "center";
@@ -688,8 +718,8 @@ async function drawResultCard() {
 
   const rows = [
     ["⚙️ SUB-BENDING KINK", `${kinkDisplayName(r.subKink)} Kink`],
-    ["❤️ LOVE STYLE", `${r.loveStyle} Love Style`],
-    ["🎭 MASK", `${r.firstImpression} Energy`],
+    ["❤️ LOVE STYLE", elementBender(r.loveStyle)],
+    ["🎭 MASK", elementBender(r.firstImpression)],
     ["🔒 HIDDEN TRAIT", r.hidden],
     ["📜 RELATIONSHIP QUIRK", r.quirk]
   ];
